@@ -15,9 +15,9 @@ const FilterContainer = ({ filters, priceRange }) => {
 
     const filtersMenuList = [
         { name: "Price", helperText: "Low to high", code: "price" },
-        { name: "Departure", helperText: "Low to high", code: "dep" },
-        { name: "Arrivel", helperText: "Low to high", code: "arrival" },
-        { name: "Duration", helperText: "Low to high", code: "duration" },
+        { name: "Departure", helperText: "Earliest first", code: "dep" },
+        { name: "Arrivel", helperText: "Earliest first", code: "arrival" },
+        { name: "Duration", helperText: "Shortest first", code: "duration" },
     ]
 
     //handling filter range slider
