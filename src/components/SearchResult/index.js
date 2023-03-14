@@ -1,6 +1,5 @@
 import { Box } from '@mui/material'
 import React, { useEffect, useState } from 'react'
-import _results from "../../data/api-data.json"
 import Home from '../Home'
 import { Arrival, Departure, Duration, Price, PriceRange } from './filterAction'
 import FilterContainer from './FilterContainer'
@@ -14,7 +13,7 @@ const SearchResult = () => {
     )
 
     //setting up the initial render 
-    const setData = async () => {
+    const setData = async (_results) => {
         let data = [];
         let maxPrice = 0
         let minPrice = 0
@@ -86,10 +85,31 @@ const SearchResult = () => {
 
 
     useEffect(() => {
-        if (flights.length === 0) {
 
-            setData()
+        //fetching the data from the file
+
+        if (flights.length === 0) {
+            fetch('api-data.json'
+                , {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    }
+                }
+            )
+                .then(function (response) {
+                    console.log(response)
+                    return response.json();
+                })
+                .then(function (myJson) {
+                    console.log(myJson);
+                    setData(myJson)
+                }).catch((error) => {
+                    console.log(error);
+                })
         }
+
+
     }, [sorted])
 
     return (<>
