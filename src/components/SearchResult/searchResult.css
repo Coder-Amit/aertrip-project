@@ -1,0 +1,30 @@
+.flightBox {
+  width: 70%;
+  height: 6rem;
+  border-radius: 5px;
+  display: grid;
+  grid-template-columns: 20% 60% 20%;
+  background-color: #fff;
+  color: #000;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+.flight-vendor {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+.vendor-image {
+  width: 34px;
+  height: 34px;
+}
+.flight-cost {
+  display: grid;
+  place-items: center;
+}
+
+.flight-duration {
+  display: grid;
+  grid-template-columns: 15% 70% 15%;
+  align-items: center;
+}
