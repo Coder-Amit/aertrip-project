@@ -10,6 +10,16 @@ const FilterContainer = ({ filters, priceRange }) => {
     const [anchorElUser, setAnchorElUser] = React.useState(null);
     const [value, setValue] = React.useState([priceRange.min, priceRange.max]);
 
+    //handling filter active state
+    const [activeFilter, setActiveFilter] = React.useState("price")
+
+    const filtersMenuList = [
+        { name: "Price", helperText: "Low to high", code: "price" },
+        { name: "Departure", helperText: "Low to high", code: "dep" },
+        { name: "Arrivel", helperText: "Low to high", code: "arrival" },
+        { name: "Duration", helperText: "Low to high", code: "duration" },
+    ]
+
     //handling filter range slider
 
     function valuetext(value) {
@@ -47,8 +57,10 @@ const FilterContainer = ({ filters, priceRange }) => {
 
     const handleSorting = (type) => {
         setAnchorElUser(null);
+        setActiveFilter(type)
         if (type === "price") {
             filters.handlePriceFilter();
+
         }
         if (type === "dep") {
             filters.handleDepartureFilter();
@@ -106,19 +118,13 @@ const FilterContainer = ({ filters, priceRange }) => {
                         open={Boolean(anchorElUser)}
                         onClose={handleCloseUserMenu}
                     >
+                        {/* Mapping through filter type */}
+                        {filtersMenuList.map((listItem) => {
+                            return <MenuItem className={listItem.code === activeFilter ? '_active' : ""} onClick={() => handleSorting(listItem.code)}>
+                                <Typography textAlign="center">{listItem.name}<span className='helpertext'>{listItem.helperText}</span></Typography>
+                            </MenuItem>
+                        })}
 
-                        <MenuItem onClick={() => handleSorting("price")}>
-                            <Typography textAlign="center">Price<span className='helpertext'>Low to high</span></Typography>
-                        </MenuItem>
-                        <MenuItem onClick={() => handleSorting("dep")}>
-                            <Typography textAlign="center">Departure<span className='helpertext'>Earliest first</span></Typography>
-                        </MenuItem>
-                        <MenuItem onClick={() => handleSorting("arrival")}>
-                            <Typography textAlign="center">Arrival<span className='helpertext'>Earliest first</span></Typography>
-                        </MenuItem>
-                        <MenuItem onClick={() => handleSorting("duration")}>
-                            <Typography textAlign="center">Duration<span className='helpertext'>Shortest first</span></Typography>
-                        </MenuItem>
 
                     </Menu>
                 </Box>

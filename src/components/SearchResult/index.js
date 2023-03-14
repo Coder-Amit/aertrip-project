@@ -39,7 +39,8 @@ const SearchResult = () => {
 
 
         })
-        setFligts(data)
+        let sortedData = Price(data)
+        setFligts(sortedData)
         setPriceRange({ ...priceRange, min: minPrice, max: maxPrice })
 
     }

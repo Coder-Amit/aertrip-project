@@ -21,6 +21,10 @@
   font-size: x-small;
   padding: 0 1rem;
 }
+._active {
+  background-color: #0066cc8d !important;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;

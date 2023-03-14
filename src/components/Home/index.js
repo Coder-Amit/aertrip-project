@@ -43,6 +43,9 @@ const Home = (props) => {
                 height: '10rem',
                 mb: "20px",
                 backgroundColor: '#fff',
+                boxShadow: "rgba(0, 0, 0, 0.16) 0px 1px 4px",
+                position: 'sticky',
+                top: 0,
                 '&:hover': {
                     borderBottom: "2px solid #0066cc"
                 },
